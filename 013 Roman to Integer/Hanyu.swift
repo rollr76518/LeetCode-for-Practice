@@ -2,7 +2,7 @@
 //  13. Roman to Integer_Hanyu.swift
 //  
 //
-//  Created by Ryan on 2016/6/19.
+//  Created by Hanyu on 2016/6/19.
 //
 //
 
