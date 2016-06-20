@@ -39,100 +39,101 @@ class Solution {
 //        return dic
 //    }()
     
-    func romanToInt(s: String) -> Int {
-        return Solution.romanToIntTable[s] ?? 0
-    }
-
     
-// 108 ms
+// 122ms
 //    static var romanToIntTable : [String:Int] = {
-//        var RtoITable:[String:Int] = [:]
-//        var itoRTable:[Int:String] = [:]
+//        var RtoITable:[String:Int] = ["":0]
+//        var itoRTable:[Int:String] = [0:""]
+//        var part1=0
+//        var part2=0
+//        var part1Roman=""
+//        var part2Roman=""
 //        
-//        //個位數
-//        for i in 0...9{
-//            let roman = romanDigitTable[0][i]
+//        for i in 1...3999{
+//            if i < 10{
+//                part1 = i
+//                part2 = 0
+//                part1Roman = romanDigitTable[0][part1]
+//            }else if i < 100{
+//                part1 = i/10
+//                part2 = i%10
+//                part1Roman = romanDigitTable[1][part1]
+//            }else if i < 1000{
+//                part1 = i/100
+//                part2 = i%100
+//                part1Roman = romanDigitTable[2][part1]
+//            }else{
+//                part1 = i/1000
+//                part2 = i%1000
+//                part1Roman = romanDigitTable[3][part1]
+//            }
+//            part2Roman = itoRTable[part2]!
+//            let roman = "\(part1Roman)\(part2Roman)"
 //            RtoITable[roman] = i
 //            itoRTable[i] = roman
-//            print("\(i) : \(roman)")
+//            //print("\(i) : \(roman)")
 //        }
-//        
-//        //十位數
-//        for part1 in 1...9{
-//            let part1Roman = romanDigitTable[1][part1]
-//            for part2 in 0...9{
-//                let part2Roman = itoRTable[part2]!
-//                let roman = "\(part1Roman)\(part2Roman)"
-//                let i = part1 * 10 + part2
-//                RtoITable[roman] = i
-//                itoRTable[i] = roman
-//                print("\(i) : \(roman)")
-//            }
-//        }
-//        
-//        //百位數
-//        for part1 in 1...9{
-//            let part1Roman = romanDigitTable[2][part1]
-//            for part2 in 0...99{
-//                let part2Roman = itoRTable[part2]!
-//                let roman = "\(part1Roman)\(part2Roman)"
-//                let i = part1 * 100 + part2
-//                RtoITable[roman] = i
-//                itoRTable[i] = roman
-//                print("\(i) : \(roman)")
-//            }
-//        }
-//        
-//        //千位數
-//        for part1 in 1...3{
-//            let part1Roman = romanDigitTable[3][part1]
-//            for part2 in 0...999{
-//                let part2Roman = itoRTable[part2]!
-//                let roman = "\(part1Roman)\(part2Roman)"
-//                let i = part1 * 1000 + part2
-//                RtoITable[roman] = i
-//                itoRTable[i] = roman
-//                print("\(i) : \(roman)")
-//            }
-//        }
-//        
 //        return RtoITable
 //    }()
     
+    // 108 ms
     static var romanToIntTable : [String:Int] = {
-        var RtoITable:[String:Int] = ["":0]
-        var itoRTable:[Int:String] = [0:""]
-        var part1=0
-        var part2=0
-        var part1Roman=""
-        var part2Roman=""
+        var RtoITable:[String:Int] = [:]
+        var itoRTable:[Int:String] = [:]
         
-        for i in 1...3999{
-            if i < 10{
-                part1 = i
-                part2 = 0
-                part1Roman = romanDigitTable[0][part1]
-            }else if i < 100{
-                part1 = i/10
-                part2 = i%10
-                part1Roman = romanDigitTable[1][part1]
-            }else if i < 1000{
-                part1 = i/100
-                part2 = i%100
-                part1Roman = romanDigitTable[2][part1]
-            }else{
-                part1 = i/1000
-                part2 = i%1000
-                part1Roman = romanDigitTable[3][part1]
-            }
-            part2Roman = itoRTable[part2]!
-            let roman = "\(part1Roman)\(part2Roman)"
+        //個位數
+        for i in 0...9{
+            let roman = romanDigitTable[0][i]
             RtoITable[roman] = i
             itoRTable[i] = roman
-            //print("\(i) : \(roman)")
+            print("\(i) : \(roman)")
         }
+        
+        //十位數
+        for part1 in 1...9{
+            let part1Roman = romanDigitTable[1][part1]
+            for part2 in 0...9{
+                let part2Roman = itoRTable[part2]!
+                let roman = "\(part1Roman)\(part2Roman)"
+                let i = part1 * 10 + part2
+                RtoITable[roman] = i
+                itoRTable[i] = roman
+                print("\(i) : \(roman)")
+            }
+        }
+        
+        //百位數
+        for part1 in 1...9{
+            let part1Roman = romanDigitTable[2][part1]
+            for part2 in 0...99{
+                let part2Roman = itoRTable[part2]!
+                let roman = "\(part1Roman)\(part2Roman)"
+                let i = part1 * 100 + part2
+                RtoITable[roman] = i
+                itoRTable[i] = roman
+                print("\(i) : \(roman)")
+            }
+        }
+        
+        //千位數
+        for part1 in 1...3{
+            let part1Roman = romanDigitTable[3][part1]
+            for part2 in 0...999{
+                let part2Roman = itoRTable[part2]!
+                let roman = "\(part1Roman)\(part2Roman)"
+                let i = part1 * 1000 + part2
+                RtoITable[roman] = i
+                itoRTable[i] = roman
+                print("\(i) : \(roman)")
+            }
+        }
+        
         return RtoITable
     }()
+    
+    func romanToInt(s: String) -> Int {
+        return Solution.romanToIntTable[s] ?? 0
+    }
     
 }
 
