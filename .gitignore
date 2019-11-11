@@ -1,0 +1,5 @@
+*.plist
+*.xcuserstate
+*.xcworkspacedata
+*.xcplayground
+*.xctimeline
